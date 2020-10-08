@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>de.li2b2</groupId>
+    <artifactId>li2b2-custom-server-demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>li2b2 Server Demo</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    
+	<profiles>
+		<profile>
+			<id>webclient</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<version>3.0.2</version>
+						<executions>
+							<execution>
+								<id>unpack</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<!-- this is a non-standard dependency bundle with i2b2 webclient. 
+											See README.md for instructions. -->
+										<artifactItem>
+											<groupId>org.i2b2</groupId>
+											<artifactId>webclient</artifactId>
+											<version>1.7.12.0001</version>
+											<type>zip</type>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.build.directory}/generated-resources</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+					</resource>
+					<resource>
+						<directory>${project.build.directory}/generated-resources</directory>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+	</profiles>
+
+
+    <dependencies>
+		<dependency>
+			<groupId>de.li2b2.facade</groupId>
+			<artifactId>li2b2-server</artifactId>
+			<version>0.8-SNAPSHOT</version>
+		</dependency>
+		<!-- dependencies to as standalone jetty application -->
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+			<version>9.4.32.v20200930</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-servlet</artifactId>
+			<version>9.4.32.v20200930</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-util</artifactId>
+			<version>9.4.32.v20200930</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>2.30</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet-core</artifactId>
+			<version>2.32</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.inject</groupId>
+			<artifactId>jersey-hk2</artifactId>
+			<version>2.32</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-jetty-http</artifactId>
+			<version>2.32</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.ext.cdi</groupId>
+			<artifactId>jersey-cdi1x-servlet</artifactId>
+			<version>2.32</version>
+		</dependency>
+		<!-- jersey needs cdi api for standalone running -->
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		
+    </dependencies>
+
+    <build>
+	    <finalName>li2b2-custom-server-demo</finalName>
+	    <plugins>
+
+		<!-- other Maven plugins ... -->
+
+		<plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-assembly-plugin</artifactId>
+		    <version>3.3.0</version>
+
+		    <configuration>
+			<descriptorRefs>
+			    <descriptorRef>jar-with-dependencies</descriptorRef>
+			</descriptorRefs>
+						<archive>
+			      <manifest>
+				<mainClass>de.li2b2.serverdemo.HttpServer</mainClass>
+			      </manifest>
+			    </archive>
+		    </configuration>
+
+		    <executions>
+			<execution>
+			    <id>make-assembly</id>
+			    <phase>package</phase>
+			    <goals>
+				<goal>single</goal>
+			    </goals>
+			</execution>
+		    </executions>
+
+		</plugin>
+	    </plugins>
+    </build>
+
+</project>

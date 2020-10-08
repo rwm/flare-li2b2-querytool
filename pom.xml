@@ -69,7 +69,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 		<dependency>
 			<groupId>de.li2b2.facade</groupId>
 			<artifactId>li2b2-server</artifactId>
-			<version>0.8-SNAPSHOT</version>
+			<version>0.8</version>
 		</dependency>
 		<!-- dependencies to as standalone jetty application -->
 		<dependency>

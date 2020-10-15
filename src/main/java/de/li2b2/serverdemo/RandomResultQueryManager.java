@@ -9,6 +9,7 @@ import java.time.Instant;
 import java.util.Random;
 
 import javax.xml.bind.JAXB;
+import javax.xml.transform.TransformerException;
 
 import de.sekmi.li2b2.api.crc.QueryResult;
 import de.sekmi.li2b2.api.crc.QueryStatus;
@@ -43,7 +44,19 @@ public class RandomResultQueryManager extends FileBasedQueryManager{
 	@Override
 	protected void executeQuery(QueryImpl query){
 		ExecutionImpl e = query.addExecution(QueryStatus.INCOMPLETE);
-		// TODO perform execution
+		
+		// print query
+		System.out.println("Query "+query.getId());
+		try {
+			System.out.println(Util.elementToXmlString(query.getDefinition(), true));
+			System.out.println("Wrapped");
+			System.out.println(Util.elementToXmlString(Util.wrapRequestQueryDefinition(query.getDefinition(), query.getRequestTypes()), true));
+		} catch (TransformerException e1) {
+			e1.printStackTrace();
+		}
+
+		
+		// perform execution, customized execution can be done here 
 		e.setStartTimestamp(Instant.now());
 
 		for( QueryResult result : e.getResults() ) {

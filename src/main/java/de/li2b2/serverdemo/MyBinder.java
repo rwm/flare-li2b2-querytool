@@ -28,7 +28,7 @@ public class MyBinder extends AbstractBinder{
 		bind(pm).to(ProjectManager.class);
 				
 		// query manager
-		FileBasedQueryManager crc = RandomResultQueryManager.initialize(dataRoot.resolve("qm.xml"), dataRoot.resolve("qm"));		
+		FileBasedQueryManager crc = FlareHttpQueryManager.initialize(dataRoot.resolve("qm.xml"), dataRoot.resolve("qm"));		
 		bind(crc).to(QueryManager.class);
 
 		// ontology

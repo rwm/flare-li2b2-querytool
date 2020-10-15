@@ -7,16 +7,16 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.li2b2</groupId>
-    <artifactId>li2b2-custom-server-demo</artifactId>
+    <artifactId>flare-li2b2-querytool</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>li2b2 Server Demo</name>
 
 	<scm>
-		<connection>scm:git:git@github.com:li2b2/li2b2-custom-server-demo.git</connection>
+		<connection>scm:git:git@github.com:rwm/flare-li2b2-querytool.git</connection>
 		<tag>HEAD</tag>
-		<url>https://github.com/li2b2/li2b2-custom-server-demo</url>
+		<url>https://github.com/rwm/flare-li2b2-querytool</url>
 	</scm>
 
     <properties>

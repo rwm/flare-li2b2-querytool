@@ -17,6 +17,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 		<connection>scm:git:git@github.com:li2b2/li2b2-custom-server-demo.git</connection>
 		<tag>HEAD</tag>
 		<url>https://github.com/li2b2/li2b2-custom-server-demo</url>
+		<developerConnection>scm:git:git@github.com:li2b2/li2b2-custom-server-demo.git</developerConnection>
 	</scm>
 
     <properties>
@@ -160,6 +161,15 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 			</execution>
 		    </executions>
 
+		</plugin>
+		<!-- Release plugin -->
+		<plugin>
+			<artifactId>maven-release-plugin</artifactId>
+			<version>2.5.3</version>
+			<configuration>
+				<useReleaseProfile>false</useReleaseProfile>
+				<tagNameFormat>v@{version}</tagNameFormat>
+			</configuration>
 		</plugin>
 	    </plugins>
     </build>

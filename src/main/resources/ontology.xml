@@ -1,46 +1,136 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <ontology>
-	<concept key="diag">
-		<name>Place a file named ontology.xml in the application directory</name>
-		<tooltip>A concept for collection of diagnoses</tooltip>
-		<narrower/><!-- narrower without concepts indicates an empty folder -->
-	</concept>
-	<concept key="example">
-		<name>Example</name>
-		<tooltip>Another example concept</tooltip>
+	<concept key="/pat">
+		<name>Demographics</name>
 		<narrower>
-			<concept key="examplesub" code="LOINC:12345-6">
-				<name>Integer sub concept</name>
-				<tooltip>Example for a sub concept of numeric integer type</tooltip>
+			<concept key="/pat/gender" code="S:365873007">
+				<name>Gender</name>
+				<tooltip>Gender information is available</tooltip>
+				<narrower>
+					<concept key="/pat/gender/female" code="S:703118005">
+						<name>Female</name>
+					</concept>
+					<concept key="/pat/gender/male" code="S:703117000">
+						<name>Male</name>
+					</concept>
+					<concept key="/pat/gender/unknown" code="S:394743007">
+						<name>Unknown gender</name>
+					</concept>
+				</narrower>
+			</concept>
+			<concept key="/pat/survival" code="S:xx">
+				<name>Survival status</name>
+				<narrower>
+					<concept key="/pat/survival/alive" code="S:alive">
+						<name>Alive</name>
+					</concept>
+					<concept key="/pat/survival/dead" code="S:397709008">
+						<name>Patient deceased</name>
+					</concept>
+				</narrower>
+			</concept>
+		</narrower><!-- narrower without concepts indicates an empty folder -->
+	</concept>
+	<concept key="/meas">
+		<name>Measurements</name>
+		<narrower>
+			<concept key="/meas/lab">
+				<name>Lab Tests</name>
+				<tooltip>Laboratory tests</tooltip>
+				<narrower>
+					<concept key="/meas/lab/I_COVAS_COV_M030_LAB_PARA_Q210" code="C:I_COVAS_COV_M030_LAB_PARA_Q210">
+						<name>AST</name>
+						<constraints>
+							<datatype></datatype>
+							<unit>TODO</unit>
+						</constraints>
+					</concept>
+					<concept key="/meas/lab/I_COVAS_COV_M030_LAB_PARA_Q220" code="C:I_COVAS_COV_M030_LAB_PARA_Q220">
+						<name>ALT</name>
+						<constraints>
+							<datatype>Integer</datatype>
+							<unit>TODO</unit>
+						</constraints>
+					</concept>
+					<concept key="/meas/lab/I_COVAS_COV_M030_LAB_PARA_Q230" code="C:I_COVAS_COV_M030_LAB_PARA_Q230">
+						<name>Gamma-GT</name>
+						<constraints>
+							<datatype>Integer</datatype>
+							<unit>TODO</unit>
+						</constraints>
+					</concept>
+					<concept key="/meas/lab/I_COVAS_COV_M030_LAB_PARA_Q240" code="C:I_COVAS_COV_M030_LAB_PARA_Q240">
+						<name>AP</name>
+						<constraints>
+							<datatype>Integer</datatype>
+							<unit>TODO</unit>
+						</constraints>
+					</concept>
+					<concept key="/meas/lab/I_COVAS_COV_M030_LAB_PARA_Q250" code="C:I_COVAS_COV_M030_LAB_PARA_Q250">
+						<name>LDH</name>
+						<constraints>
+							<datatype>Integer</datatype>
+							<unit>TODO</unit>
+						</constraints>
+					</concept>
+					<concept key="/meas/lab/I_COVAS_COV_M030_LAB_PARA_Q300" code="C:I_COVAS_COV_M030_LAB_PARA_Q300">
+						<name>CK</name>
+						<constraints>
+							<datatype>Integer</datatype>
+							<unit>TODO</unit>
+						</constraints>
+					</concept>
+					<concept key="/meas/lab/I_COVAS_COV_M030_LAB_PARA_Q310" code="C:I_COVAS_COV_M030_LAB_PARA_Q310">
+						<name>CK-MB</name>
+						<constraints>
+							<datatype>Integer</datatype>
+							<unit>TODO</unit>
+						</constraints>
+					</concept>
+					<concept key="/meas/lab/I_COVAS_COV_M030_LAB_PARA_Q330" code="C:I_COVAS_COV_M030_LAB_PARA_Q330">
+						<name>Myoglobin</name>
+						<constraints>
+							<datatype>Integer</datatype>
+							<unit>TODO</unit>
+						</constraints>
+					</concept>
+					<concept key="/meas/lab/I_COVAS_COV_M030_LAB_PARA_Q350" code="C:I_COVAS_COV_M030_LAB_PARA_Q350">
+						<name>NTproBNP</name>
+						<constraints>
+							<datatype>PosFloat</datatype>
+							<unit>TODO</unit>
+						</constraints>
+					</concept>
+					<concept key="/meas/lab/I_COVAS_COV_M030_LAB_PARA_Q360" code="C:I_COVAS_COV_M030_LAB_PARA_Q360">
+						<name>Harnstoff</name>
+						<constraints>
+							<datatype>Integer</datatype>
+							<unit>TODO</unit>
+						</constraints>
+					</concept>
+					<concept key="/meas/lab/I_COVAS_COV_M030_LAB_PARA_Q370" code="C:I_COVAS_COV_M030_LAB_PARA_Q370">
+						<name>Kreatin</name>
+						<constraints>
+							<datatype>Integer</datatype>
+							<unit>TODO</unit>
+						</constraints>
+					</concept>
+					<concept key="/meas/lab/I_COVAS_COV_M030_LAB_PARA_Q410" code="C:I_COVAS_COV_M030_LAB_PARA_Q410">
+						<name>Eisen</name>
+						<constraints>
+							<datatype>Integer</datatype>
+							<unit>TODO</unit>
+						</constraints>
+					</concept>
+				</narrower>
+			</concept>
+			<concept key="/meas/M020_BEFUND_Q100" code="C:M020_BEFUND_Q100">
+				<name>Körpertemperatur</name>
 				<constraints>
-					<datatype>Integer</datatype>
-					<unit>Count</unit>
-				</constraints>
-				<!-- no narrower element indicates leaf -->
-			</concept>
-			<concept key="examplesub2">
-				<name>String sub concept</name>
-				<tooltip>Example for a sub concept of string type</tooltip>
-				<constraints>
-					<datatype>String</datatype>
-				</constraints>
-				<!-- no narrower element indicates leaf -->
-			</concept>
-			<concept key="etc" patient-count="42">
-				<name>Etcetera...</name>
-				<tooltip>Et cetera (with patient count)</tooltip>
-			</concept>
-			<concept key="/example/enum">
-				<name>Enum sub concept</name>
-				<constraints>
-					<datatype>Enum</datatype>
-					<enum>
-						<value label="First">1.</value>
-						<value>2.</value>
-						<value>3.</value>
-					</enum>
+					<datatype>PosFloat</datatype>
+					<unit>°C</unit>
 				</constraints>
 			</concept>
-		</narrower>
+		</narrower><!-- narrower without concepts indicates an empty folder -->
 	</concept>
 </ontology>
